@@ -1,3 +1,5 @@
+package main;
+
 public class Manager implements Employee {
     private final static int FixedSalary = 40000;
     private int PersonIncome;
@@ -29,6 +31,6 @@ public class Manager implements Employee {
     }
 
     public String toString() {
-        return "\nтип работника: manager\nзарплата: " + MounthSalary + "\nдоход компании: " + Company.getIncome();
+        return "\nтип работника: Manager\nзарплата: " + MounthSalary + "\nдоход компании: " + Company.getIncome();
     }
 }

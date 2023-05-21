@@ -1,3 +1,5 @@
+package main;
+
 public class Operator implements Employee {
     private final static int FixedSalary = 20000;
     private int MounthSalary;

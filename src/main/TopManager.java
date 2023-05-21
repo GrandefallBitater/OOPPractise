@@ -1,3 +1,5 @@
+package main;
+
 public class TopManager implements Employee {
     private final static int FixedSalary = 40000;
     private company Company;
