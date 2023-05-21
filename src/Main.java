@@ -4,8 +4,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         company test = new company();
-        Employee l = new Operator();
+        Manager l = new Manager();
+
         test.hire(l);
+        System.out.println(l.getPersonIncome());
         test.showEmployee();
     }
 }
