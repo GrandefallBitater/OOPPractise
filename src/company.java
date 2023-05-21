@@ -10,6 +10,10 @@ public class company {
 
     private final static int minIncome = 8000000;
 
+    public List<Employee> getListOfEmployee() {
+        return ListOfEmployee;
+    }
+
     private List<Employee> ListOfEmployee = new ArrayList<>();
     public company(){
         this.Income = createIncome();

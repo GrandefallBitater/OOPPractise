@@ -9,29 +9,24 @@ public class Main {
         firstCompany.hireAll(StaffList);
 
         System.out.println("\nСписок из пятнадцати зарплат по убыванию:");
-        List<Employee> topSalaryStaff = firstCompany.getTopSalaryStaff(15);
-        if(topSalaryStaff == null){
-            System.out.println("некорретное число работников");
-        }else {
-            for (Employee e :
-                    topSalaryStaff) {
-                System.out.println(e.getMounthSalary());
-            }
-        }
+        TopSalary(15, firstCompany);
 
         System.out.println("\nСписок из тридцати зарплат по возрастанию:");
-        List<Employee> lowestSalaryStaff = firstCompany.getLowestSalaryStaff(30);
-        if(topSalaryStaff == null){
-            System.out.println("некорретное число работников");
-        }else {
-            for (Employee e :
-                    lowestSalaryStaff) {
-                System.out.println(e.getMounthSalary());
-            }
-        }
+        LowestSalary(30, firstCompany);
 
         //увольняем 50% сотрудников
+        int size = firstCompany.getListOfEmployee().size();
+        size = size / 2;
+        for (int i = 0; i < size; i++){
+            firstCompany.fire((int)(Math.random()*(firstCompany.getListOfEmployee().size()-1-0)+1)+0);
+        }
+        System.out.println("\nудаление прошло успешно");
 
+        System.out.println("\nСписок из пятнадцати зарплат по убыванию:");
+        TopSalary(15, firstCompany);
+
+        System.out.println("\nСписок из тридцати зарплат по возрастанию:");
+        LowestSalary(30, firstCompany);
     }
 
     private static List<Employee> CreateStaff(int OperatorCount, int ManagerCount, int TopManagerCount){
@@ -49,5 +44,30 @@ public class Main {
             ListOfEmployee.add(sub);
         }
         return ListOfEmployee;
+    }
+
+    private static void TopSalary(int count, company firstCompany){
+
+        List<Employee> topSalaryStaff = firstCompany.getTopSalaryStaff(count);
+        if(topSalaryStaff == null){
+            System.out.println("некорретное число работников");
+        }else {
+            for (Employee e :
+                    topSalaryStaff) {
+                System.out.println(e.getMounthSalary() + " руб");
+            }
+        }
+    }
+
+    private static void LowestSalary(int count, company firstCompany) {
+        List<Employee> lowestSalaryStaff = firstCompany.getLowestSalaryStaff(count);
+        if(lowestSalaryStaff == null){
+            System.out.println("некорретное число работников");
+        }else {
+            for (Employee e :
+                    lowestSalaryStaff) {
+                System.out.println(e.getMounthSalary() + " руб");
+            }
+        }
     }
 }
