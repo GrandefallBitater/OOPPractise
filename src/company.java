@@ -22,7 +22,7 @@ public class company {
             ((Manager) employee).setCompany(this);
         } else if (employee instanceof TopManager) {
             ((TopManager) employee).setCompany(this);
-        } else if (employee instanceof Manager) {
+        } else if (employee instanceof Operator) {
             ((Operator) employee).setCompany(this);
         }
         employee.getMounthSalary();
