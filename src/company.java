@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class company {
@@ -32,7 +33,7 @@ public class company {
         } else if (employee instanceof Operator) {
             ((Operator) employee).setCompany(this);
         }
-        employee.getMounthSalary();
+        employee.CreateSalary();
         return employee;
     }
 
@@ -43,11 +44,15 @@ public class company {
     }
 
     public void hireAll(List<Employee> listOfEmployees){
+        for (Employee e:
+             listOfEmployees) {
+            PrepareEmployee(e);
+        }
         ListOfEmployee.addAll(listOfEmployees);
     }
 
-    public void fire(){
-
+    public void fire(int Index){
+        ListOfEmployee.remove(Index);
     }
 
     public int getIncome(){
@@ -55,11 +60,43 @@ public class company {
     }
 
     public List<Employee> getTopSalaryStaff(int count){
-        return null;
+        if((count <= 0) ||(count > ListOfEmployee.size())){
+            return null;
+        }
+        ListOfEmployee.sort(new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if(o1.getMounthSalary() > o2.getMounthSalary()){
+                    return -1;
+                }else if(o1.getMounthSalary() < o2.getMounthSalary()){
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }
+        });
+        List<Employee> sub =  ListOfEmployee.subList(0, count);
+        return sub;
     }
 
     public List<Employee> getLowestSalaryStaff(int count){
-        return null;
+        if((count <= 0) ||(count > ListOfEmployee.size())){
+            return null;
+        }
+        ListOfEmployee.sort(new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                if(o1.getMounthSalary() > o2.getMounthSalary()){
+                    return 1;
+                }else if(o1.getMounthSalary() < o2.getMounthSalary()){
+                    return -1;
+                }else{
+                    return 0;
+                }
+            }
+        });
+        List<Employee> sub =  ListOfEmployee.subList(0, count);
+        return sub;
     }
 
     public String toString(){

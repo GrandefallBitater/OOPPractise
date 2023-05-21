@@ -4,7 +4,10 @@ public class Manager implements Employee{
     }
 
     private company Company;
+
     private int MounthSalary;
+
+
 
     public void CreatePersonIncome() {
         int maxIncome = 140000;
@@ -30,7 +33,12 @@ public class Manager implements Employee{
     }
 
     @Override
-    public void getMounthSalary() {
+    public void CreateSalary(){
         MounthSalary = FixedSalary + ((PersonIncome * 5) / 100);
+    }
+
+    @Override
+    public int getMounthSalary() {
+        return MounthSalary;
     }
 }

@@ -13,12 +13,16 @@ public class Operator implements Employee{
     }
 
     public String toString(){
-        return "\nтип работника: Operator\nзарплата: " + MounthSalary;
+        return "\nтип работника: Operator\nзарплата: " + MounthSalary + "\nдоход компании: " + Company.getIncome();
     }
 
     @Override
-    public void getMounthSalary() {
-        int Income  = Company.getIncome();
-        MounthSalary = FixedSalary + ((Income * 5) / 100);
+    public int getMounthSalary() {
+        return MounthSalary;
     }
+    @Override
+    public void CreateSalary(){
+        MounthSalary = FixedSalary;
+    }
+
 }

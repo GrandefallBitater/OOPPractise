@@ -6,19 +6,25 @@ public class TopManager implements Employee {
     private company Company;
     private int MounthSalary;
 
-    private final static int FixedSalary = 60000;
+    private final static int FixedSalary = 40000;
 
     public TopManager(){
 
     }
 
     public String toString(){
-        return "\nтип работника: TopManager\nзарплата: " + MounthSalary;
+        return "\nтип работника: TopManager\nзарплата: " + MounthSalary + "\nдоход компании: " + Company.getIncome();
     }
 
     @Override
-    public void getMounthSalary() {
-        int Income  = Company.getIncome();
-        MounthSalary = FixedSalary + ((Income * 5) / 100);
+    public int getMounthSalary() {
+        return MounthSalary;
+    }
+    @Override
+    public void CreateSalary(){
+        MounthSalary = FixedSalary;
+        if(Company.getIncome() > 10000000){
+            MounthSalary += 1.5 * MounthSalary;
+        }
     }
 }
